@@ -20,9 +20,32 @@ Concentre-se na no arquivo internal/infra/database/auction/create_auction.go, vo
 Lembre-se que estamos trabalhando com concorrência, implemente uma solução que solucione isso:
 Verifique como o cálculo de intervalo para checar se o leilão (auction) ainda é válido está sendo realizado na rotina de criação de bid;
 Para mais informações de como funciona uma goroutine, clique aqui e acesse nosso módulo de Multithreading no curso Go Expert;
- 
+
 ## Entrega:
 
 O código-fonte completo da implementação.
 Documentação explicando como rodar o projeto em ambiente dev.
 Utilize docker/docker-compose para podermos realizar os testes de sua aplicação.
+
+## Como acessar o MongoDB
+
+Utilizando o mongo shell para connectar o mongoDB
+
+    Com o MongoDB Shell Instalado localmente (https://www.mongodb.com/try/download/shell)
+
+    Executar o comando para conectar ao mongodb
+    	mongosh "mongodb://admin:admin@localhost:27017"
+
+    Selecionar a base de dados admin
+    	use admin
+
+    Para ver as collections dessa base
+    	show collections
+    		system.users
+    		system.version
+
+    Consultando os dados da collection users
+    	db.system.users.find()
+
+
+## Como executar o projeto:
