@@ -47,5 +47,26 @@ Utilizando o mongo shell para connectar o mongoDB
     Consultando os dados da collection users
     	db.system.users.find()
 
-
 ## Como executar o projeto:
+
+Para subir o app:
+
+```sh
+make up
+```
+
+Para parar o contêiner:
+
+```sh
+make down
+```
+
+Para ver os logs:
+
+```sh
+make logs
+```
+
+## Como testar o projeto:
+
+Primeiro, para facilitar a crição do leilão e dar os lances, utilizar o arquivo ./test/auction.http
