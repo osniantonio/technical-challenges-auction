@@ -13,20 +13,20 @@
 # Content-Type: application/json
 
 // Criar um novo leilão
-##
+# ##
 # POST http://localhost:8080/auction  HTTP/1.1
 # Content-Type: application/json
 
 # {
-#     "product_name": "Product 1",
-#     "category": "Category 1",
-#     "description": "Auction to product 1",
+#     "product_name": "Product 5",
+#     "category": "Category 3",
+#     "description": "Auction to product 5",
 #     "condition": 0
 # }
 
-# # Listar todos os leilões
-# GET http://localhost:8080/auction?status=0  HTTP/1.1
-# Content-Type: application/json
+// Listar todos os leilões
+GET http://localhost:8080/auction?status=0  HTTP/1.1
+Content-Type: application/json
 
 // Listar um leilão pelo ID
 # GET http://localhost:8080/auction/f8745188-c2dc-4372-8673-e2cef21bd0f0  HTTP/1.1

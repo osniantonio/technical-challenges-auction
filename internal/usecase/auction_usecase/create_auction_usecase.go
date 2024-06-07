@@ -14,6 +14,7 @@ type AuctionInputDTO struct {
 	Category    string           `json:"category" binding:"required,min=2"`
 	Description string           `json:"description" binding:"required,min=10,max=200"`
 	Condition   ProductCondition `json:"condition" binding:"oneof=0 1 2"`
+	Duration    int64            `json:"duration"`
 }
 
 type AuctionOutputDTO struct {
@@ -69,11 +70,16 @@ type AuctionUseCase struct {
 func (au *AuctionUseCase) CreateAuction(
 	ctx context.Context,
 	auctionInput AuctionInputDTO) *internal_error.InternalError {
+
+	duration := time.Duration(auctionInput.Duration) * time.Second
+
 	auction, err := auction_entity.CreateAuction(
 		auctionInput.ProductName,
 		auctionInput.Category,
 		auctionInput.Description,
-		auction_entity.ProductCondition(auctionInput.Condition))
+		auction_entity.ProductCondition(auctionInput.Condition),
+		duration)
+
 	if err != nil {
 		return err
 	}

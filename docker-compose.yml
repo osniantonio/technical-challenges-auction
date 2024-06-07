@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   app:
+    container_name: app
     build:
       dockerfile: Dockerfile
       context: .
@@ -9,9 +10,10 @@ services:
       - "8080:8080"
     env_file:
       - cmd/auction/.env
-    command: sh -c "/auction"
+    command: sh -c "/app/auction"
     networks:
-      - localNetwork
+      localNetwork:
+        ipv4_address: 172.31.0.10
 
   mongodb:
     image: mongo:latest
@@ -23,7 +25,8 @@ services:
     volumes:
       - mongo-data:/data/db
     networks:
-      - localNetwork
+      localNetwork:
+        ipv4_address: 172.31.0.11
 
 volumes:
   mongo-data:
@@ -32,3 +35,6 @@ volumes:
 networks:
   localNetwork:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.0.0/16

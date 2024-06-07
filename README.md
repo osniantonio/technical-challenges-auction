@@ -16,7 +16,7 @@ Um teste para validar se o fechamento está acontecendo de forma automatizada;
 
 ## Dicas:
 
-Concentre-se na no arquivo internal/infra/database/auction/create_auction.go, você deverá implementar a solução nesse arquivo;
+Concentre-se no arquivo internal/infra/database/auction/create_auction.go, você deverá implementar a solução nesse arquivo;
 Lembre-se que estamos trabalhando com concorrência, implemente uma solução que solucione isso:
 Verifique como o cálculo de intervalo para checar se o leilão (auction) ainda é válido está sendo realizado na rotina de criação de bid;
 Para mais informações de como funciona uma goroutine, clique aqui e acesse nosso módulo de Multithreading no curso Go Expert;
@@ -47,18 +47,25 @@ Utilizando o mongo shell para connectar o mongoDB
     Consultando os dados da collection users
     	db.system.users.find()
 
-## Como executar o projeto:
+## Como executar e testar:
 
-Para subir o app:
+Primeiro, utilizando o make para subir os contêineres:
 
 ```sh
+make build
 make up
 ```
 
-Para parar o contêiner:
+Para acessar o container do app:
 
 ```sh
-make down
+docker exec -it app bash
+```
+
+Para executar o teste:
+
+```sh
+go test -v -run ^TestCloseAuctionAutomatically$ fullcycle-auction_go/internal/infra/database/auction
 ```
 
 Para ver os logs:
@@ -67,6 +74,6 @@ Para ver os logs:
 make logs
 ```
 
-## Como testar o projeto:
+## Para facilitar a manutenção dos registro no mongoDB e testar o projeto:
 
 Primeiro, para facilitar a crição do leilão e dar os lances, utilizar o arquivo ./test/auction.http

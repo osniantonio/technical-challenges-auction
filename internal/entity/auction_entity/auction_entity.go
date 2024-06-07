@@ -10,7 +10,8 @@ import (
 
 func CreateAuction(
 	productName, category, description string,
-	condition ProductCondition) (*Auction, *internal_error.InternalError) {
+	condition ProductCondition,
+	duration time.Duration) (*Auction, *internal_error.InternalError) {
 	auction := &Auction{
 		Id:          uuid.New().String(),
 		ProductName: productName,
@@ -19,6 +20,7 @@ func CreateAuction(
 		Condition:   condition,
 		Status:      Active,
 		Timestamp:   time.Now(),
+		Duration:    duration,
 	}
 
 	if err := auction.Validate(); err != nil {
@@ -48,6 +50,7 @@ type Auction struct {
 	Condition   ProductCondition
 	Status      AuctionStatus
 	Timestamp   time.Time
+	Duration    time.Duration
 }
 
 type ProductCondition int
