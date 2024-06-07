@@ -43,6 +43,7 @@ func main() {
 	router.GET("/auction/winner/:auctionId", auctionsController.FindWinningBidByAuctionId)
 	router.POST("/bid", bidController.CreateBid)
 	router.GET("/bid/:auctionId", bidController.FindBidByAuctionId)
+	router.POST("/user", userController.CreateUser)
 	router.GET("/user/:userId", userController.FindUserById)
 
 	router.Run(":8080")

@@ -1,3 +1,17 @@
+// Criar um usuário para testes
+##
+# POST http://localhost:8080/user  HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "name": "User test 1"
+# }
+// make logs - pode verificar o id do usuário criado para utilizar nos demais posts
+
+// Listar um usuário pelo ID
+# GET http://localhost:8080/user/d2640dc4-3c00-45c2-b237-95bde8bb4065  HTTP/1.1
+# Content-Type: application/json
+
 // Criar um novo leilão
 ##
 # POST http://localhost:8080/auction  HTTP/1.1
@@ -28,15 +42,12 @@
 # Content-Type: application/json
 
 # {
-#     "user_id": "ca0a0dd3-8049-41af-aa7d-de116e072ea4",
+#     "user_id": "d2640dc4-3c00-45c2-b237-95bde8bb4065",
 #     "auction_id": "f8745188-c2dc-4372-8673-e2cef21bd0f0",
 #     "amount": 1
 # }
 
 // Listar o lance de um leilão pelo ID (VER ???)
-# GET http://localhost:8080/bid/f8745188-c2dc-4372-8673-e2cef21bd0f0  HTTP/1.1
-# Content-Type: application/json
-
-// Listar um usuário pelo ID
-GET http://localhost:8080/user/ca0a0dd3-8049-41af-aa7d-de116e072ea4  HTTP/1.1
+GET http://localhost:8080/bid/f8745188-c2dc-4372-8673-e2cef21bd0f0  HTTP/1.1
 Content-Type: application/json
+
