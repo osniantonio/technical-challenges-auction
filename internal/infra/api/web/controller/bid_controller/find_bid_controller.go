@@ -3,9 +3,10 @@ package bid_controller
 import (
 	"context"
 	"fullcycle-auction_go/configuration/rest_err"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"net/http"
 )
 
 func (u *BidController) FindBidByAuctionId(c *gin.Context) {
@@ -22,6 +23,17 @@ func (u *BidController) FindBidByAuctionId(c *gin.Context) {
 	}
 
 	bidOutputList, err := u.bidUseCase.FindBidByAuctionId(context.Background(), auctionId)
+	if err != nil {
+		errRest := rest_err.ConvertError(err)
+		c.JSON(errRest.Code, errRest)
+		return
+	}
+
+	c.JSON(http.StatusOK, bidOutputList)
+}
+
+func (u *BidController) FindBids(c *gin.Context) {
+	bidOutputList, err := u.bidUseCase.FindBids(context.Background())
 	if err != nil {
 		errRest := rest_err.ConvertError(err)
 		c.JSON(errRest.Code, errRest)

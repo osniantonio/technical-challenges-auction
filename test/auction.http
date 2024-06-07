@@ -24,7 +24,7 @@
 #     "condition": 0
 # }
 
-# Listar todos os leilões
+# # Listar todos os leilões
 # GET http://localhost:8080/auction?status=0  HTTP/1.1
 # Content-Type: application/json
 
@@ -46,6 +46,10 @@
 #     "auction_id": "f8745188-c2dc-4372-8673-e2cef21bd0f0",
 #     "amount": 1
 # }
+
+// Listar todos os lances para teste
+# GET http://localhost:8080/bid  HTTP/1.1
+# Content-Type: application/json
 
 // Listar o lance de um leilão pelo ID (VER ???)
 GET http://localhost:8080/bid/f8745188-c2dc-4372-8673-e2cef21bd0f0  HTTP/1.1

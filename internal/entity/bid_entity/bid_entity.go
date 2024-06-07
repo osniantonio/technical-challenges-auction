@@ -3,8 +3,9 @@ package bid_entity
 import (
 	"context"
 	"fullcycle-auction_go/internal/internal_error"
-	"github.com/google/uuid"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type Bid struct {
@@ -47,6 +48,8 @@ type BidEntityRepository interface {
 	CreateBid(
 		ctx context.Context,
 		bidEntities []Bid) *internal_error.InternalError
+
+	FindBids(ctx context.Context) ([]Bid, *internal_error.InternalError)
 
 	FindBidByAuctionId(
 		ctx context.Context, auctionId string) ([]Bid, *internal_error.InternalError)

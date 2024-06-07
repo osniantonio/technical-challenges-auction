@@ -5,6 +5,26 @@ import (
 	"fullcycle-auction_go/internal/internal_error"
 )
 
+func (bu *BidUseCase) FindBids(ctx context.Context) ([]BidOutputDTO, *internal_error.InternalError) {
+	bidList, err := bu.BidRepository.FindBids(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	var bidOutputList []BidOutputDTO
+	for _, bid := range bidList {
+		bidOutputList = append(bidOutputList, BidOutputDTO{
+			Id:        bid.Id,
+			UserId:    bid.UserId,
+			AuctionId: bid.AuctionId,
+			Amount:    bid.Amount,
+			Timestamp: bid.Timestamp,
+		})
+	}
+
+	return bidOutputList, nil
+}
+
 func (bu *BidUseCase) FindBidByAuctionId(
 	ctx context.Context, auctionId string) ([]BidOutputDTO, *internal_error.InternalError) {
 	bidList, err := bu.BidRepository.FindBidByAuctionId(ctx, auctionId)

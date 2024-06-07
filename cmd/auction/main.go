@@ -41,8 +41,11 @@ func main() {
 	router.GET("/auction/:auctionId", auctionsController.FindAuctionById)
 	router.POST("/auction", auctionsController.CreateAuction)
 	router.GET("/auction/winner/:auctionId", auctionsController.FindWinningBidByAuctionId)
+
+	router.GET("/bid", bidController.FindBids)
 	router.POST("/bid", bidController.CreateBid)
 	router.GET("/bid/:auctionId", bidController.FindBidByAuctionId)
+
 	router.POST("/user", userController.CreateUser)
 	router.GET("/user/:userId", userController.FindUserById)
 
